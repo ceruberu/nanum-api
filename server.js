@@ -24,7 +24,7 @@ const server = app.listen(3000, () => {
 
 MongoClient.connect(mongoUrl).then(client => {
   console.log("Welcome to MongoDB");
-  const db = client.db('open-theater');
+  const db = client.db('nanum');
   app.set("db", db);
 }).catch(err => {
   console.log(err);

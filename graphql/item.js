@@ -27,21 +27,21 @@ const Item = `
 
   type Item {
     id: ID!
-    donatorID: ID!
+    donatorID: ID
     title: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-    finished_at: DateTime!
+    created_at: DateTime
+    updated_at: DateTime
+    finished_at: DateTime
     tags: [String]
-    receiver: ID!
-    donate_status: DONATE_STATUS!
+    receiver: ID
+    donate_status: DONATE_STATUS
     image_url: String
-    city: String!
+    city: String
   }
 
   input ItemInput {
-    id: ID!
     title: String!
+    city: String
   }
 `
 

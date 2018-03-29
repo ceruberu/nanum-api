@@ -51,16 +51,37 @@ const SchemaDefinition = `
 
 const resolvers = {
   Query: {
-    items: (parentValue, args, req) => items,
     user: (parentValue, args, req) => {
 
+    },
+    items: (parentValue, args, req) => {
+      const itemsCollection = req.app.get("db").collection("Items");
+      return itemsCollection.find
     }
   },
   Mutation: {
     createUser: (parentValue, { input }, req) => {
-
+      const usersCollection = req.app.get("db").collection("Users");
+      return usersCollection.insertOne({
+        ...input
+      }).then( result => {
+        return result.ops[0];
+      }).catch( err => {
+        return err;
+      })
     },
     createItem: (parentValue, { input }, req) => {
+      const itemsCollection = req.app.get("db").collection("Items");
+      console.log("INPUT:: ", input);
+      return itemsCollection.insertOne({
+        ...input
+      }).then( result => {
+        console.log("RESPONSE:: ", result.ops);
+        return result.ops[0];
+      }).catch( err => {
+        console.log("ERR:: ", err);
+        return err;
+      })
     }
   }
 
