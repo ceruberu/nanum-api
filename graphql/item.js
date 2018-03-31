@@ -26,7 +26,7 @@ const Item = `
   }
 
   type Item {
-    id: ID!
+    _id: ID!
     donatorID: ID
     title: String!
     created_at: DateTime
