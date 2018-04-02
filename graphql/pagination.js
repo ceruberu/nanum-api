@@ -9,7 +9,7 @@ const Pagination = `
     hasNextPage: Boolean
   }
 
-  type mainQuery {
+  type itemFeed {
     edges: [itemEdge]
     pageInfo: pageInfo
   }
