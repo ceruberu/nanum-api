@@ -1,4 +1,4 @@
-export default function createItem (parentValue, { input }, req) {
+export default function (parentValue, { input }, req) {
   const itemsCollection = req.app.get("db").collection("Items");
   console.log("INPUT:: ", input);
   // For insert in real database

@@ -9,20 +9,26 @@ import Item from "./item";
 import User from "./user";
 import QueryResolvers from "./queries";  
 import MutationResolvers from "./mutations";
+import DirectiveResolvers from "./directives";
 
 const RootQuery = `
   type Query {
     items(limit: Int = 10): [Item]
     user: User
-    itemFeed(limit: Int!, after: Cursor): itemFeed
+    feedQuery(limit: Int!, after: Cursor): feedQuery
   }
 `;
 
 const RootMutation = `
   type Mutation {
-    createUser(input:UserInput): User
-    createItem(input:ItemInput): Item
+    userLogin(input:LocalLoginInput): User
+    userSignup(email:String): User
+    itemCreate(input:ItemInput): Item
   }
+`;
+
+const Directives = `
+  directive @auth on FIELD_DEFINITION
 `;
 
 const SchemaDefinition = `
@@ -42,11 +48,13 @@ export default makeExecutableSchema({
   typeDefs: [
     SchemaDefinition,
     RootQuery,
-    RootMutation,   
+    RootMutation,  
+    Directives, 
     Pagination,
     Scalars,
     Item,
     User
   ],
-  resolvers
+  resolvers,
+  directiveResolvers: DirectiveResolvers
 });

@@ -10,7 +10,6 @@ import { MongoClient, ObjectId } from 'mongodb';
 
 import schema from "./graphql/schema";
 import { mongoUrl } from "./credentials.json";
-import apiRouter from './routes';
 
 // const Shows = db.collection('shows');
 
@@ -23,9 +22,15 @@ app.use(logger('dev'));
 // app.use(cookieParser());
 app.use(cors());
 
-// app.use('/api', apiRouter);
 app.use('/graphql', graphqlHTTP({
   schema,
+  formatError: error => ({
+    message: error.message,
+    locations: error.locations,
+    stack: error.stack ? error.stack.split('\n') : [],
+    state: error.originalError && error.originalError.state,
+    path: error.path
+  }),
   graphiql: dev
 }));
 

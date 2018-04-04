@@ -1,5 +1,5 @@
-import itemFeed from './itemFeed';
+import feedQuery from './feedQuery';
 
 export default {
-  itemFeed
+  feedQuery
 };

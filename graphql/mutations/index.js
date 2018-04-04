@@ -1,6 +1,7 @@
-import createUser from './createUser';
-import createItem from './createItem';
+import userSignup from './userSignup';
+import userLogin from './userLogin';
+import itemCreate from './itemCreate';
 
 export default {
-  createUser, createItem
+  userSignup, userLogin, itemCreate
 };

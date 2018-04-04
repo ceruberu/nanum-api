@@ -2,7 +2,7 @@ import { ObjectId } from 'mongodb';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import koLocale from 'date-fns/locale/ko';
 
-export default async function itemFeed (parentValue, { limit, after, city, cursor }, req) {
+export default async function (parentValue, { limit, after, city, cursor }, req) {
   console.log("QUERY::", parentValue, limit, after, city, cursor);
   let edgesArray = [];
   const filter = {

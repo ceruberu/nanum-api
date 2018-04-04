@@ -1,6 +1,7 @@
-const User = `
+export default `
   type User {
-    id: ID!
+    _id: ID!
+    display_name: String!
     username: String!
     email: String!
     email_verified: Boolean!
@@ -14,6 +15,9 @@ const User = `
   input UserInput {
     username: String!
   }
-`;
 
-export default User;
+  input LocalLoginInput {
+    email: String!
+    password: String!
+  }
+`;
