@@ -1,6 +1,10 @@
 export default `
   type User {
     _id: ID!
+    isAuthenticated: Boolean
+    pictureUrl: String
+    facebookUserId: String
+    facebookEmail: String
     display_name: String!
     username: String!
     email: String!
@@ -19,5 +23,9 @@ export default `
   input LocalLoginInput {
     email: String!
     password: String!
+  }
+
+  input FacebookLoginInput {
+    facebookToken: String!
   }
 `;

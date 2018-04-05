@@ -3,7 +3,6 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import koLocale from 'date-fns/locale/ko';
 
 export default async function (parentValue, { limit, after, city, cursor }, req) {
-  console.log("QUERY::", parentValue, limit, after, city, cursor);
   let edgesArray = [];
   const filter = {
     ...after && {
@@ -15,8 +14,6 @@ export default async function (parentValue, { limit, after, city, cursor }, req)
   const sorter = {
     _id: -1
   };
-
-  console.log("FILTER", filter);
 
   const itemsCollection = req.app.get("db").collection("Items");
   var itemsCursor = await itemsCollection.find(filter).limit(limit+1).sort(sorter);

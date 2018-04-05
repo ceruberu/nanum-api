@@ -3,7 +3,6 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import expressJwt from 'express-jwt';
 import jwt from 'jsonwebtoken';
 import graphqlHTTP from "express-graphql";
 import { MongoClient, ObjectId } from 'mongodb';
@@ -24,13 +23,13 @@ app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,
-  formatError: error => ({
-    message: error.message,
-    locations: error.locations,
-    stack: error.stack ? error.stack.split('\n') : [],
-    state: error.originalError && error.originalError.state,
-    path: error.path
-  }),
+  // formatError: error => ({
+  //   message: error.message,
+  //   locations: error.locations,
+  //   stack: error.stack ? error.stack.split('\n') : [],
+  //   state: error.originalError && error.originalError.state,
+  //   path: error.path
+  // }),
   graphiql: dev
 }));
 

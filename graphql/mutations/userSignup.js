@@ -3,7 +3,7 @@ import { randomBytes } from 'crypto';
 import { validateEmail, validateEmailInUse } from '../../utils/validators';
 import { ValidationError, DatabaseError } from '../../utils/errors';
 
-export default async (parentValue, { email }, req) => {
+export default async function (parentValue, { email }, req) {
   console.log("USER SIGNUP REQUESTED");
   let errors = [];
 

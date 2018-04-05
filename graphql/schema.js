@@ -16,14 +16,16 @@ const RootQuery = `
     items(limit: Int = 10): [Item]
     user: User
     feedQuery(limit: Int!, after: Cursor): feedQuery
+    currentUserQuery(token: String!): User
   }
 `;
 
 const RootMutation = `
   type Mutation {
     userLogin(input:LocalLoginInput): User
-    userSignup(email:String): User
+    userSignup(email:String!): User
     itemCreate(input:ItemInput): Item
+    authenticateFacebookUser(facebookToken:String): String
   }
 `;
 
